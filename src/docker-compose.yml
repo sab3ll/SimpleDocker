@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  my_server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: my_server
+
+  nginx_proxy:
+    image: nginx:latest
+    container_name: nginx_proxy
+    ports:
+      - 80:8080
+    volumes:
+      - ./nginx/nginx_2.conf:/etc/nginx/nginx.conf
